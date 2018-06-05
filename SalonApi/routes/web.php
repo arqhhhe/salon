@@ -17,3 +17,4 @@ Route::get('/', function () {
 
 
 Route::resource('service', 'ServiceController');
+Route::resource('customer', 'CustomerController');

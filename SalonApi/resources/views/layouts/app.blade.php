@@ -33,7 +33,7 @@
                 <a class="nav-link" href="#">Employee</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Customer</a>
+                <a class="nav-link" href="/customer">Customer</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Billing</a>
