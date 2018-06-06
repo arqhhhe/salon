@@ -30,7 +30,7 @@
                 <a class="nav-link" href="/service">Service</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Employee</a>
+                <a class="nav-link" href="/employee">Employee</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/customer">Customer</a>
@@ -45,6 +45,8 @@
 <main role="main" class="container" >
     @yield('content')
 </main>
+
+<footer></footer>
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Employee;
+use App\Service;
 use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
@@ -14,7 +15,9 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        //
+        $employees = Employee::all();
+
+        return view('employee.index', ['employees' => $employees]);
     }
 
     /**
@@ -24,7 +27,8 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        //
+        $services = Service::all();
+        return view('employee.create', ['services' => $services]);
     }
 
     /**
@@ -35,7 +39,22 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $employee = new Employee();
+        $employee->full_name = $request->name;
+        $employee->phone = $request->phone;
+        $employee->email = $request->input('email', '');
+        $employee->gender = $request->gender;
+        $employee->address = $request->address;
+
+        $employee->save();
+
+//        foreach ($request->services as $serviceId){
+//            $employee->services()->attach($serviceId);
+//        }
+
+        $employee->services()->sync($request->services);
+
+        return redirect('/employee');
     }
 
     /**
@@ -57,7 +76,18 @@ class EmployeeController extends Controller
      */
     public function edit(Employee $employee)
     {
-        //
+        $services = Service::all();
+
+        foreach ($services as $key => &$service){
+            foreach ($employee->services as $employeesService){
+                if($employeesService->id == $service->id){
+                    $service['checked'] = 'checked="checked"';
+                }
+            }
+        }
+
+
+        return view('employee.edit', ['employee' => $employee, 'services' => $services]);
     }
 
     /**
@@ -69,7 +99,19 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, Employee $employee)
     {
-        //
+
+        $employee->full_name = $request->name;
+        $employee->phone = $request->phone;
+        $employee->email = $request->input('email', '');
+        $employee->gender = $request->gender;
+        $employee->address = $request->address;
+
+        $employee->save();
+
+        $employee->services()->sync($request->services);
+
+
+        return redirect('/employee');
     }
 
     /**

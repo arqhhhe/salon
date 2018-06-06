@@ -19,7 +19,7 @@ class CreateEmployeesTable extends Migration
             $table->string('phone');
             $table->string('email');
             $table->enum('gender', ['male', 'female']);
-            $table->mediumText('Address');
+            $table->mediumText('address');
 
             $table->timestamps();
             $table->softDeletes();
