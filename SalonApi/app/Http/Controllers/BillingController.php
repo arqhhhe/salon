@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Billing;
+use App\Customer;
+use App\Employee;
+use App\Service;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class BillingController extends Controller
 {
@@ -14,7 +18,9 @@ class BillingController extends Controller
      */
     public function index()
     {
-        //
+        $billings = Billing::all();
+
+        return view('billing.index', ['billings' => $billings]);
     }
 
     /**
@@ -24,7 +30,10 @@ class BillingController extends Controller
      */
     public function create()
     {
-        //
+        $customers = Customer::where( 'updated_at', '>', Carbon::now()->subHour(10) )->get();
+        $employees = Employee::all();
+        $services = Service::all();
+        return view('billing.create', ['customers' => $customers, 'employees' => $employees, 'services' => $services]);
     }
 
     /**
@@ -35,7 +44,22 @@ class BillingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $billing = new Billing();
+        $billing->customer_id = $request->customer;
+        $billing->employee_id = $request->employee;
+        $billing->total_amount = $request->total_amount;
+        $billing->discount_rate = $request->discount_rate;
+        $billing->discount_amount = $request->discount_amount;
+        $billing->total_paid = $request->total_paid;
+
+
+        $billing->save();
+
+        $billing->services()->sync($request->services);
+
+
+
+        return redirect('/billing');
     }
 
     /**

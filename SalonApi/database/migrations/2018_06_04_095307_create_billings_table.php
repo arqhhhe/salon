@@ -17,10 +17,9 @@ class CreateBillingsTable extends Migration
             $table->increments('id');
             $table->integer('customer_id')->unsigned();
             $table->integer('employee_id')->unsigned();
-            $table->integer('service_id')->unsigned();
             $table->decimal('total_amount');
-            $table->decimal('discount_rate');
-            $table->decimal('discount_amount');
+            $table->decimal('discount_rate')->nullable();
+            $table->decimal('discount_amount')->nullable();
             $table->decimal('total_paid');
 
             $table->timestamps();
@@ -35,9 +34,6 @@ class CreateBillingsTable extends Migration
                 ->references('id')->on('employees')
                 ->onDelete('cascade')->onUpdate('cascade');
 
-            $table->foreign('service_id')
-                ->references('id')->on('services')
-                ->onDelete('cascade')->onUpdate('cascade');
         });
 
 

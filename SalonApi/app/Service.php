@@ -16,16 +16,14 @@ class Service extends Model
      */
     protected $dates = ['deleted_at'];
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function billings(){
-
-        return $this->hasMany('App\Billing');
-    }
 
     public function employees(){
 
         return $this->belongsToMany('App\Employee')->withTimestamps();
+    }
+
+    public function bililngs(){
+
+        return $this->belongsToMany('App\Billing')->withTimestamps();
     }
 }

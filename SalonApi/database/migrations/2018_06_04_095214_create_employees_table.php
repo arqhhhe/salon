@@ -16,10 +16,10 @@ class CreateEmployeesTable extends Migration
         Schema::create('employees', function (Blueprint $table) {
             $table->increments('id');
             $table->string('full_name');
-            $table->string('phone');
-            $table->string('email');
+            $table->string('phone')->nullable();
+            $table->string('email')->nullable();
             $table->enum('gender', ['male', 'female']);
-            $table->mediumText('address');
+            $table->mediumText('address')->nullable();
 
             $table->timestamps();
             $table->softDeletes();

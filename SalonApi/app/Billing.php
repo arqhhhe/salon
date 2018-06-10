@@ -27,17 +27,17 @@ class Billing extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function Employee(){
+    public function employee(){
 
         return $this->belongsTo('App\Employee');
     }
 
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function Service(){
+    public function services(){
 
-        return $this->belongsTo('App\Service');
+        return $this->belongsToMany('App\Service')->withTimestamps();
     }
 }

@@ -1,4 +1,6 @@
-@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);/*!
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
+/*@import "custom.css";  Using a string */
+/*!
  * Bootstrap v4.1.1 (https://getbootstrap.com/)
  * Copyright 2011-2018 The Bootstrap Authors
  * Copyright 2011-2018 Twitter, Inc.
@@ -2116,7 +2118,7 @@ pre code {
 
 .table .thead-dark th {
   color: #f5f8fa;
-  background-color: #212529;
+  background-color: #212529 !important;
   border-color: #32383e;
 }
 
@@ -2365,7 +2367,7 @@ select.form-control-sm:not([size]):not([multiple]),
 .input-group-sm > .input-group-append > select.input-group-text:not([size]):not([multiple]),
 .input-group-sm > .input-group-prepend > select.btn:not([size]):not([multiple]),
 .input-group-sm > .input-group-append > select.btn:not([size]):not([multiple]) {
-  height: calc(1.68125rem + 2px);
+  height: calc(1.68125rem + 8px);
 }
 
 .form-control-lg,
@@ -4572,7 +4574,8 @@ input[type="button"].btn-block {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  padding: 0.5rem 1rem;
+  padding: 0;
+	margin-top: -23px;
 }
 
 .navbar > .container,
@@ -10418,6 +10421,51 @@ a.text-dark:focus {
 }
 
 main.container {
-  margin-top: 100px;
+  margin-top: 40px;
 }
-
+.b-pad-15{
+	padding-bottom: 15px;
+}
+main.container .col-md-12 {
+    background: #fff;
+}
+.bgwhite{
+    background: #fff;
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+body.Home .top_menu .menu.home,
+body.customer .top_menu .menu.customer,
+body.service .top_menu .menu.service,
+body.employee .top_menu .menu.employee,
+body.Billing .top_menu .menu.Billing,
+body.Reports .top_menu .menu.Reports{
+    background: #000;
+    color: #fff;
+}
+body.Home .top_menu .menu.home a,
+body.customer .top_menu .menu.customer a,
+body.service .top_menu .menu.service a,
+body.employee .top_menu .menu.employee a,
+body.Billing .top_menu .menu.Billing a,
+body.Reports .top_menu .menu.Reports a{
+    color: #fff !important;
+}
+@media screen and (max-width: 667px) {
+.top-left-part {
+    width: 100% !important;
+    text-align: center !important;
+}
+	table.dataTable>tbody>tr.child ul.dtr-details{
+	width: 100%;
+	}
+}
+@media screen and (max-width: 370px) {
+.container-fluid {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+}
+	div.dataTables_wrapper div.dataTables_filter{
+		width: 100%;
+	}
+}
